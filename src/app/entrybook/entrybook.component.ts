@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-interface EntryBook {
+export interface EntryBook {
   fullname: string;
   entrytype: string;
   appointandsalary: string;

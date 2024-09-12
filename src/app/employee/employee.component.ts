@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 @Component({
   selector: 'app-employee',
@@ -10,7 +11,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class EmployeeComponent implements OnInit {
   fullname: string = '';
   leaveForm = {
-    fullname: '',  // This will be auto-filled
+    fullname: '', // This will be auto-filled
     leavetype: '',
     fromDate: '',
     toDate: '',
@@ -26,7 +27,7 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFullName();
-    this.fetchLeaveData(); // Fetch leave data when component initializes
+    this.fetchLeaveData(); // Fetch leave data when the component initializes
   }
 
   logout(): void {
@@ -42,7 +43,8 @@ export class EmployeeComponent implements OnInit {
   fetchLeaveData(): void {
     this.http.get<any[]>(this.getLeaveDataUrl).subscribe({
       next: (data) => {
-        this.leaveData = data; // Update the leaveData property with the fetched data
+        // Filter leave data to show only the logged-in employee's data
+        this.leaveData = data.filter(leave => leave.fullname === this.fullname);
       },
       error: (error) => {
         console.error('Error fetching leave data:', error);
@@ -53,17 +55,28 @@ export class EmployeeComponent implements OnInit {
   onSubmit(): void {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.post(this.leaveApiUrl, this.leaveForm, { headers })
-      .subscribe({
-        next: (response) => {
-          alert('Leave application submitted successfully!');
-          console.log('Response:', response);
-          this.fetchLeaveData(); // Refresh the leave data after submitting
-        },
-        error: (error) => {
-          alert('Error submitting leave application. Please try again.');
-          console.error('Error details:', error);
-        }
-      });
+    this.http.post(this.leaveApiUrl, this.leaveForm, { headers }).subscribe({
+      next: (response) => {
+        // SweetAlert for successful submission
+        Swal.fire({
+          title: 'Success!',
+          text: 'Leave application submitted successfully!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        console.log('Response:', response);
+        this.fetchLeaveData(); // Refresh the leave data after submitting
+      },
+      error: (error) => {
+        // SweetAlert for error during submission
+        Swal.fire({
+          title: 'Error',
+          text: 'Error submitting leave application. Please try again.',
+          icon: 'error',
+          confirmButtonText: 'Try Again'
+        });
+        console.error('Error details:', error);
+      }
+    });
   }
 }

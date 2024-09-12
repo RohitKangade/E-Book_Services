@@ -6,12 +6,11 @@
     <span id="emp">Hello, {{ fullname }}</span>
     <a href="#" id="logout" class="nav-text" (click)="logout()">Logout</a>
 </div>
-<span class="container">
+
+<div class="container">
     <h2>रजेचा अर्ज करा</h2>
-</span>
-<form class="leave-form" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <div class="section">
+    <form class="leave-form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
             <label for="fullname">पूर्ण नाव:</label>
             <input
               type="text"
@@ -22,37 +21,41 @@
               disabled
             />
         </div>
-        <label for="leavetype">रजेचा प्रकार</label>
-        <select id="leavetype" name="leavetype" [(ngModel)]="leaveForm.leavetype">
-            <option value="" disabled selected>प्रकार निवडा</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <option value="option3">Option 3</option>
-        </select>
-    </div>
 
-    <div class="form-group date-group">
-        <label for="fromDate" class="date-label">कधीपासून</label>
-        <input type="date" id="fromDate" name="fromDate" [(ngModel)]="leaveForm.fromDate">
-        <label for="toDate" class="date-label">कधीपर्यंत</label>
-        <input type="date" id="toDate" name="toDate" [(ngModel)]="leaveForm.toDate">
-    </div>
+        <div class="form-group">
+            <label for="leavetype">रजेचा प्रकार:</label>
+            <select id="leavetype" name="leavetype" [(ngModel)]="leaveForm.leavetype">
+                <option value="" disabled selected>प्रकार निवडा</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label for="leavereason">कारण</label>
-        <input type="text" id="leavereason" name="leavereason" placeholder="Enter text here" [(ngModel)]="leaveForm.leavereason">
-    </div>
+        <div class="form-group date-group">
+            <label for="fromDate" class="date-label">कधीपासून:</label>
+            <input type="date" id="fromDate" name="fromDate" [(ngModel)]="leaveForm.fromDate">
+            
+            <label for="toDate" class="date-label">कधीपर्यंत:</label>
+            <input type="date" id="toDate" name="toDate" [(ngModel)]="leaveForm.toDate">
+        </div>
 
-    <div class="form-group button-center">
-        <button type="submit">अर्ज करा</button>
-    </div>
-</form>
+        <div class="form-group">
+            <label for="leavereason">कारण:</label>
+            <input type="text" id="leavereason" name="leavereason" placeholder="Enter text here" [(ngModel)]="leaveForm.leavereason">
+        </div>
 
-<body>
+        <div class="form-group button-center">
+            <button type="submit">अर्ज करा</button>
+        </div>
+    </form>
+</div>
+
+<div class="container">
     <table>
         <thead>
             <tr>
-                <th>अनु.क्र.</th>
+                <!-- <th>अनु.क्र.</th> -->
                 <th>रजेचा प्रकार</th>
                 <th>कारण</th>
                 <th>कधीपासून</th>
@@ -62,7 +65,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let leave of leaveData">
-                <td>{{ leave.id }}</td>
+                <!-- <td>{{ leave.id }}</td> -->
                 <td>{{ leave.leavetype }}</td>
                 <td>{{ leave.leavereason }}</td>
                 <td>{{ leave.fromDate | date }}</td>
@@ -71,4 +74,4 @@
             </tr>
         </tbody>
     </table>
-</body>
+</div>
