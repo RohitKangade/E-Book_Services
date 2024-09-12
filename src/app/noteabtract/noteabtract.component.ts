@@ -61,8 +61,7 @@ export class NoteabtractComponent implements OnInit {
   fetchEntries(fullname: string): void {
     this.http.get<Entry[]>(`${this.apiUrl}${fullname}`).subscribe(
       (response) => {
-        // Filter entries to display only those of the logged-in employee
-        this.entries = response.filter(entry => entry.entrytype === 'Employee Specific Type'); // Adjust filter if necessary
+        this.entries = response; // Fetch all data based on fullname
       },
       (error) => {
         console.error('Error fetching entries:', error);
@@ -79,6 +78,7 @@ export class NoteabtractComponent implements OnInit {
     this.http.get<EntryDetails>(`${this.detailsApiUrl}${entryId}`).subscribe(
       (response) => {
         this.popupData = response;
+        // Assign fetched data to form fields
         this.appointandsalary = response.appointandsalary;
         this.positionofappoint = response.positionofappoint;
         this.salaryinperappoint = response.salaryinperappoint;
@@ -103,18 +103,22 @@ export class NoteabtractComponent implements OnInit {
 
   updatePopupData(): void {
     if (this.popupData) {
+      // Update popupData with current form values before any further actions
       this.popupData.appointandsalary = this.appointandsalary;
       this.popupData.positionofappoint = this.positionofappoint;
       this.popupData.salaryinperappoint = this.salaryinperappoint;
       this.popupData.addpayontransferappoint = this.addpayontransferappoint;
       this.popupData.otherallowances = this.otherallowances;
       this.popupData.dateofappoint = this.dateofappoint;
+
+      // Optional: Implement any additional logic for updating the data back to the server
+      // Example: Sending updated data to an update API endpoint
     }
   }
 
   searchEntries(): void {
     if (this.fullname) {
-      this.fetchEntries(this.fullname);
+      this.fetchEntries(this.fullname); // Re-fetch to show updated or filtered results based on the inputs
     }
   }
 }
