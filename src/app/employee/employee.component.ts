@@ -17,16 +17,19 @@ export class EmployeeComponent implements OnInit {
     toDate: '',
     leavereason: ''
   };
-  leaveData: any[] = []; // Array to store leave data
+  leaveTypes: any[] = []; // Array to store leave types
+  leaveData: any[] = [];  // Array to store leave data
 
   private loginApiUrl = 'http://localhost:8080/api/admins/login';
   private leaveApiUrl = 'http://localhost:8080/api/employee-leave/add';
   private getLeaveDataUrl = 'http://localhost:8080/api/employee-leave/all'; // API endpoint for leave data
+  private leaveTypesApiUrl = 'http://localhost:8080/api/leavetypes'; // API endpoint for fetching leave types
 
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.getFullName();
+    this.fetchLeaveTypes(); // Fetch leave types when the component initializes
     this.fetchLeaveData(); // Fetch leave data when the component initializes
   }
 
@@ -38,6 +41,17 @@ export class EmployeeComponent implements OnInit {
   getFullName(): void {
     this.fullname = localStorage.getItem('employeeName') || ''; // Retrieve fullname from local storage
     this.leaveForm.fullname = this.fullname; // Initialize the fullname field in leaveForm
+  }
+
+  fetchLeaveTypes(): void {
+    this.http.get<any[]>(this.leaveTypesApiUrl).subscribe({
+      next: (data) => {
+        this.leaveTypes = data;
+      },
+      error: (error) => {
+        console.error('Error fetching leave types:', error);
+      }
+    });
   }
 
   fetchLeaveData(): void {

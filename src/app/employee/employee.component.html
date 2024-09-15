@@ -24,12 +24,16 @@
 
         <div class="form-group">
             <label for="leavetype">रजेचा प्रकार:</label>
-            <select id="leavetype" name="leavetype" [(ngModel)]="leaveForm.leavetype">
-                <option value="" disabled selected>प्रकार निवडा</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
+            <input
+              list="leaveTypes"
+              id="leavetype"
+              name="leavetype"
+              [(ngModel)]="leaveForm.leavetype"
+              placeholder="प्रकार निवडा किंवा टाइप करा"
+            />
+            <datalist id="leaveTypes">
+                <option *ngFor="let type of leaveTypes" [value]="type.leavetype">{{ type.leavetype }}</option>
+            </datalist>
         </div>
 
         <div class="form-group date-group">
@@ -55,7 +59,6 @@
     <table>
         <thead>
             <tr>
-                <!-- <th>अनु.क्र.</th> -->
                 <th>रजेचा प्रकार</th>
                 <th>कारण</th>
                 <th>कधीपासून</th>
@@ -65,7 +68,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let leave of leaveData">
-                <!-- <td>{{ leave.id }}</td> -->
                 <td>{{ leave.leavetype }}</td>
                 <td>{{ leave.leavereason }}</td>
                 <td>{{ leave.fromDate | date }}</td>
@@ -75,13 +77,13 @@
         </tbody>
     </table>
 </div>
+
 <div class="footer">
     <div class="footer-logo">
-      <img src="" class="footer-logo-image" />
-      <div class="footer-text">Contents are owned by जिल्हा परिषद, कोल्हापूर</div>
+        <img src="" class="footer-logo-image" />
+        <div class="footer-text">Contents are owned by जिल्हा परिषद, कोल्हापूर</div>
     </div>
     <div class="footer-links">
-     
-      <a href="https://settribe.com/" class="footer-link">Developed & Maintained by SETTribe</a>
+        <a href="https://settribe.com/" class="footer-link">Developed & Maintained by SETTribe</a>
     </div>
-  </div>
+</div>
