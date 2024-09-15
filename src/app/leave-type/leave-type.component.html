@@ -1,82 +1,53 @@
 <app-navbar></app-navbar>
 <div class="navdiv">
-    <a href="hod"><span class="nav-text">रजेचा गोषवारा</span></a>
-    <a href="hodnoteabstract"><span class="nav-text">नोंदीचा गोषवारा</span></a>
-    <a href="hodsevapushtikayadi"><span class="nav-text">सेवा पुस्तिका</span></a>
-    <a href="entrytype"><span class="nav-text">नोंदीचा प्रकार</span></a>
-    <a href="leavetype"><span class="nav-text">रजेचा प्रकार</span></a>
+    <a routerLink="hod"><span class="nav-text">रजेचा गोषवारा</span></a>
+    <a routerLink="hodnoteabstract"><span class="nav-text">नोंदीचा गोषवारा</span></a>
+    <a routerLink="hodsevapushtikayadi"><span class="nav-text">सेवा पुस्तिका</span></a>
+    <a routerLink="entrytype"><span class="nav-text">नोंदीचा प्रकार</span></a>
+    <a routerLink="leavetype"><span class="nav-text">रजेचा प्रकार</span></a>
     <span id="emp">Hello, HOD</span>
     <a href="#" id="logout" class="nav-text" onclick="logout()">Logout</a>
 </div>
-<span class="container">
+
+<div class="container">
     <h2>रजेचे प्रकार तयार करा</h2>
-</span>
-<body>
-    <div class="container">
-        <div class="form-group">
-            <label for="type">प्रकार :</label>
-            <input type="text" id="type" placeholder="येथे लिहा">
-            <button>तयार करा</button>
-        </div>
-        <div class="icons">
-            <i class="fas fa-print"></i>
-            <i class="fas fa-file-excel"></i>
-            <i class="fas fa-file-pdf"></i>
-        </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>अनु.क्र.</th>
-                        <th>प्रकार</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>अर्जित रजा</td>
-                        <td class="action-buttons">
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-edit"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>वैद्यकीय रजा</td>
-                        <td class="action-buttons">
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-edit"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>अध्ययन रजा</td>
-                        <td class="action-buttons">
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-edit"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>इतर</td>
-                        <td class="action-buttons">
-                            <i class="fas fa-trash"></i>
-                            <i class="fas fa-edit"></i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+
+    <div class="form-group">
+        <label for="type">प्रकार :</label>
+        <input type="text" id="type" [(ngModel)]="leaveType.leavetype" placeholder="येथे लिहा">
+        <button (click)="addOrUpdateLeaveType()">{{ isEdit ? 'Update' : 'Add' }}</button>
     </div>
-</body>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>अनु.क्र.</th>
+                    <th>प्रकार</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let type of leaveTypes; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ type.leavetype }}</td>
+                    <td class="action-buttons">
+                        <!-- Check if 'id' exists before calling the delete function -->
+                        <i *ngIf="type.id" class="fas fa-trash" (click)="deleteLeaveType(type.id)"></i>
+                        <i class="fas fa-edit" (click)="editLeaveType(type)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <div class="footer">
     <div class="footer-logo">
       <img src="" class="footer-logo-image" />
       <div class="footer-text">Contents are owned by जिल्हा परिषद, कोल्हापूर</div>
     </div>
     <div class="footer-links">
-     
       <a href="https://settribe.com/" class="footer-link">Developed & Maintained by SETTribe</a>
     </div>
-  </div>
+</div>
