@@ -16,6 +16,10 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
 import { CreateSevapushtikaComponent } from './create-sevapushtika/create-sevapushtika.component';
 import { UploadSevapushtikaComponent } from './upload-sevapushtika/upload-sevapushtika.component';
 import { SevapushtikaEmpnameComponent } from './sevapushtika-empname/sevapushtika-empname.component';
+import { HodNoteabstractComponent } from './hod-noteabstract/hod-noteabstract.component';
+import { HodSevapushtikaYadiComponent } from './hod-sevapushtika-yadi/hod-sevapushtika-yadi.component';
+import { HodSevapushtikaNextpageComponent } from './hod-sevapushtika-nextpage/hod-sevapushtika-nextpage.component';
+import { HodSevapushtikaComponent } from './hod-sevapushtika/hod-sevapushtika.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -35,6 +39,10 @@ const routes: Routes = [
   { path: 'create-sevapushtika', component: CreateSevapushtikaComponent },
   { path: 'upload-sevapushtika', component: UploadSevapushtikaComponent },
   { path: 'sevapushtika-empname', component: SevapushtikaEmpnameComponent },
+  { path: 'hodnoteabstract', component: HodNoteabstractComponent },
+  { path: 'hodsevapushtikayadi', component: HodSevapushtikaYadiComponent },
+  { path: 'hodsevapushtika', component: HodSevapushtikaComponent },
+  { path: 'hodsevapushtikanextpage', component: HodSevapushtikaNextpageComponent },
 ];
 
 @NgModule({

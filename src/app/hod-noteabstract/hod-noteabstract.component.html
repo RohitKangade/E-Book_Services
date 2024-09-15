@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<div class="navdiv">
+    <a href="hod"><span class="nav-text">रजेचा गोषवारा</span></a>
+    <a href="hodnoteabstract"><span class="nav-text">नोंदीचा गोषवारा</span></a>
+    <a href="hodsevapushtikayadi"><span class="nav-text">सेवा पुस्तिका</span></a>
+    <a href="#"><span class="nav-text">नोंदीचा प्रकार</span></a>
+    <a href="#"><span class="nav-text">रजेचा प्रकार</span></a>
+    <span id="emp">Hello, {{ fullname }}</span>
+    <a href="#" id="logout" class="nav-text" onclick="logout()">Logout</a>
+</div>
+<span class="container">
+    <h2>नोंद ({{ fullname }})</h2>
+</span>
+<div class="form-group">
+    <label for="fy-year">FY वर्ष :</label>
+    <input type="number" id="fy-year" [(ngModel)]="fyYear" placeholder="वर्ष">
+    <label for="type">नोंदीचा प्रकार :</label>
+    <input type="text" id="type" [(ngModel)]="entryType" placeholder="निवडा">
+    <label for="date">दिनांक :</label>
+    <input type="date" id="date" [(ngModel)]="entryDate" placeholder="DD/MM/YYYY">
+    <button class="btn" (click)="searchEntries()">पहा</button>
+</div>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>अ. क्र.</th>
+                <th>FY वर्ष</th>
+                <th>नोंदीचा प्रकार</th>
+                <th>दिनांक</th>
+                <th>स्त्य स्थिती</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entry of entries">
+                <td>{{ entry.id }}</td>
+                <td>{{ entry.fyYear }}</td>
+                <td>{{ entry.entrytype }}</td>
+                <td>{{ entry.date }}</td>
+                <td><span class="status-signed">{{ entry.status }}</span></td>
+                <td><button class="btn" (click)="handleEntryDetails(entry.id)">More Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Popup Container -->
+<div *ngIf="isPopupOpen" class="popup">
+    <div class="popup-content">
+      <span class="close" (click)="closePopup()">&times;</span>
+      <h1>वार्षिक वेतनवाढ</h1>
+      <hr>
+      <label for="appointandsalary">नियुक्ती पदनाम व वेतनश्रेणी</label>
+      <input type="text" id="appointandsalary" [(ngModel)]="appointandsalary">
+  
+      <label for="positionofappoint">नियुक्ती स्थिती</label>
+      <input type="text" id="positionofappoint" [(ngModel)]="positionofappoint">
+  
+      <label for="salaryinperappoint">कायम नियुक्तीमधील वेतन</label>
+      <input type="text" id="salaryinperappoint" [(ngModel)]="salaryinperappoint">
+  
+      <label for="addpayontransferappoint">स्थानापन्न नियुक्तीबद्दल जादा वेतन</label>
+      <input type="text" id="addpayontransferappoint" [(ngModel)]="addpayontransferappoint">
+  
+      <label for="otherallowances">इतर भत्तालब्धी</label>
+      <input type="text" id="otherallowances" [(ngModel)]="otherallowances">
+      <label for="dateofappoint">नियुक्ती दिनांक</label>
+      <input type="date" id="dateofappoint" [(ngModel)]="dateofappoint">
+      <button (click)="updatePopupData()">अपडेट</button>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer-logo">
+      <img src="" class="footer-logo-image" />
+      <div class="footer-text">Contents are owned by जिल्हा परिषद, कोल्हापूर</div>
+    </div>
+    <div class="footer-links">
+     
+      <a href="https://settribe.com/" class="footer-link">Developed & Maintained by SETTribe</a>
+    </div>
+  </div>

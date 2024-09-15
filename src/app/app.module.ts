@@ -22,6 +22,10 @@ import { CreateSevapushtikaComponent } from './create-sevapushtika/create-sevapu
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { UploadSevapushtikaComponent } from './upload-sevapushtika/upload-sevapushtika.component';
 import { SevapushtikaEmpnameComponent } from './sevapushtika-empname/sevapushtika-empname.component';
+import { HodNoteabstractComponent } from './hod-noteabstract/hod-noteabstract.component';
+import { HodSevapushtikaYadiComponent } from './hod-sevapushtika-yadi/hod-sevapushtika-yadi.component';
+import { HodSevapushtikaComponent } from './hod-sevapushtika/hod-sevapushtika.component';
+import { HodSevapushtikaNextpageComponent } from './hod-sevapushtika-nextpage/hod-sevapushtika-nextpage.component';
 
 
 @NgModule({
@@ -43,6 +47,10 @@ import { SevapushtikaEmpnameComponent } from './sevapushtika-empname/sevapushtik
     CreateEmployeeComponent,
     UploadSevapushtikaComponent,
     SevapushtikaEmpnameComponent,
+    HodNoteabstractComponent,
+    HodSevapushtikaYadiComponent,
+    HodSevapushtikaComponent,
+    HodSevapushtikaNextpageComponent,
    
   ],
   imports: [
