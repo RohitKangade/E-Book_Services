@@ -1,0 +1,245 @@
+.navdiv {
+    background-color: blueviolet;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-text {
+    color: white;
+    padding: 0 15px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+#emp {
+    margin-left: auto;
+    font-weight: bold;
+    color: white;
+}
+
+
+.container {
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    margin: 20px auto; /* Centers the container */
+}
+
+.container h2 {
+    text-align: center;
+    color: blueviolet;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.container h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: aqua;
+    margin: 10px auto 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: #4A148C;
+    margin-top: 20px;
+}
+h1::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #00BCD4;
+    margin: 10px auto 0;
+}
+.container {
+    margin: 0px auto;
+    width: 80%;
+}
+.form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.form-group label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.form-group input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+}
+.form-group button {
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    background-color: #1976D2;
+}
+.divider {
+    border-top: 2px dotted #000;
+    margin: 20px 0;
+}
+.icons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.icons i {
+    font-size: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.table-container {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+.action-buttons i {
+    font-size: 18px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.action-buttons .fa-trash {
+    color: #F44336;
+}
+.action-buttons .fa-edit {
+    color: #2196F3;
+}
+
+
+/* Footer Styles */
+.footer {
+    width: 100%;
+    background-color: #1e5bb0;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  
+  .footer-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-logo img {
+    height: 30px;
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  .footer-text {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .footer-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #ffcc00; /* Highlight color on hover */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .footer-logo img {
+      height: 25px;
+    }
+  
+    .footer-text {
+      font-size: 0.85rem;
+    }
+  
+    .footer-link {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .footer-logo img {
+      height: 20px;
+    }
+  
+    .footer-text {
+      font-size: 0.8rem;
+    }
+  
+    .footer-links {
+      gap: 10px;
+      margin-top: 5px;
+    }
+  
+    .footer-link {
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer {
+      padding: 10px;
+    }
+  
+    .footer-logo img {
+      height: 18px;
+    }
+  
+    .footer-text {
+      font-size: 0.7rem;
+    }
+  
+    .footer-link {
+      font-size: 0.65rem;
+    }
+  }
+  

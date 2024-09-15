@@ -20,6 +20,8 @@ import { HodNoteabstractComponent } from './hod-noteabstract/hod-noteabstract.co
 import { HodSevapushtikaYadiComponent } from './hod-sevapushtika-yadi/hod-sevapushtika-yadi.component';
 import { HodSevapushtikaNextpageComponent } from './hod-sevapushtika-nextpage/hod-sevapushtika-nextpage.component';
 import { HodSevapushtikaComponent } from './hod-sevapushtika/hod-sevapushtika.component';
+import { LeaveTypeComponent } from './leave-type/leave-type.component';
+import { EntryTypeComponent } from './entry-type/entry-type.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -43,6 +45,8 @@ const routes: Routes = [
   { path: 'hodsevapushtikayadi', component: HodSevapushtikaYadiComponent },
   { path: 'hodsevapushtika', component: HodSevapushtikaComponent },
   { path: 'hodsevapushtikanextpage', component: HodSevapushtikaNextpageComponent },
+  { path: 'leavetype', component: LeaveTypeComponent },
+  { path: 'entrytype', component: EntryTypeComponent },
 ];
 
 @NgModule({

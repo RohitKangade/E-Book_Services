@@ -26,6 +26,8 @@ import { HodNoteabstractComponent } from './hod-noteabstract/hod-noteabstract.co
 import { HodSevapushtikaYadiComponent } from './hod-sevapushtika-yadi/hod-sevapushtika-yadi.component';
 import { HodSevapushtikaComponent } from './hod-sevapushtika/hod-sevapushtika.component';
 import { HodSevapushtikaNextpageComponent } from './hod-sevapushtika-nextpage/hod-sevapushtika-nextpage.component';
+import { LeaveTypeComponent } from './leave-type/leave-type.component';
+import { EntryTypeComponent } from './entry-type/entry-type.component';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import { HodSevapushtikaNextpageComponent } from './hod-sevapushtika-nextpage/ho
     HodSevapushtikaYadiComponent,
     HodSevapushtikaComponent,
     HodSevapushtikaNextpageComponent,
+    LeaveTypeComponent,
+    EntryTypeComponent,
    
   ],
   imports: [
