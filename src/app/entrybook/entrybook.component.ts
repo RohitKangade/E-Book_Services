@@ -26,6 +26,10 @@ interface Admin {
   office: string;
 }
 
+interface EntryType {
+  entrytype: string;
+}
+
 @Component({
   selector: 'app-entrybook',
   templateUrl: './entrybook.component.html',
@@ -50,13 +54,16 @@ export class EntrybookComponent implements OnInit {
   };
 
   fullNames: string[] = [];
+  entryTypes: string[] = [];
   private adminApiUrl = 'http://localhost:8080/api/admins';
   private entryBookApiUrl = 'http://localhost:8080/api/entrybooks';
+  private entryTypesApiUrl = 'http://localhost:8080/api/entrytypes';
 
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.fetchFullNames();
+    this.fetchEntryTypes(); // Fetch the entry types on initialization
   }
 
   // Fetch all full names from the admin API
@@ -71,6 +78,18 @@ export class EntrybookComponent implements OnInit {
     });
   }
 
+  // Fetch all entry types from the API
+  fetchEntryTypes(): void {
+    this.http.get<EntryType[]>(this.entryTypesApiUrl).subscribe({
+      next: (types) => {
+        this.entryTypes = types.map(type => type.entrytype); // Extract entrytype from each object
+      },
+      error: (error) => {
+        console.error('Failed to fetch entry types:', error);
+      }
+    });
+  }
+
   // Handle name selection and fetch related details
   onNameSelected(event: Event): void {
     const selectedFullName = (event.target as HTMLSelectElement).value;
@@ -81,8 +100,8 @@ export class EntrybookComponent implements OnInit {
         const selectedAdmin = admins.find(admin => admin.fullname === selectedFullName);
         if (selectedAdmin) {
           this.entryBook.fullname = selectedAdmin.fullname;
-          this.entryBook.appointandsalary = selectedAdmin.appoint; // Assuming appoint is related to salary
-          this.entryBook.positionofappoint = selectedAdmin.office; // Assuming office is related to position
+          this.entryBook.appointandsalary = selectedAdmin.appoint;
+          this.entryBook.positionofappoint = selectedAdmin.office;
         }
       },
       error: (error) => {

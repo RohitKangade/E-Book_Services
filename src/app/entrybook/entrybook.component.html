@@ -12,7 +12,7 @@
     <div class="container">
         <h2>नोंद</h2>
         <label for="fullname">कर्मचारी:</label>
-        <select id="fullname" (change)="onNameSelected($event)" name="fullname">
+        <select id="fullname" class="fullname" (change)="onNameSelected($event)" name="fullname">
             <option value="" disabled selected>निवडा</option>
             <option *ngFor="let admin of fullNames" [value]="admin">{{ admin }}</option>
           </select>
@@ -27,13 +27,20 @@
                   required
                 />
               </div>
-            <div class="form-group">
+              <div class="form-group">
                 <label for="entrytype">नोंदीचा प्रकार</label>
-                <select id="entrytype" [(ngModel)]="entryBook.entrytype" name="entrytype" required>
-                    <option></option>
-                    <option>वार्षिक वेतनवाढ</option>
-                </select>
-            </div>
+                <input
+                  list="entryTypes"
+                  id="entrytype"
+                  name="entrytype"
+                  [(ngModel)]="entryBook.entrytype"
+                  placeholder="प्रकार निवडा किंवा टाइप करा"
+                />
+                <datalist id="entryTypes">
+                  <option *ngFor="let type of entryTypes" [value]="type">{{ type }}</option>
+                </datalist>
+              </div>
+              
             <div class="form-group date-group">
                 <label for="date">दिनांक</label>
                 <input type="date" id="date" [(ngModel)]="entryBook.date" name="date" required>
